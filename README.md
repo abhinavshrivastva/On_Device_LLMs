@@ -40,12 +40,27 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
    pip install -r llama.cpp/requirements.txt
    ```
 
-5. **Convert the Model**
+5. **Build llama.cpp Using CMake**
 
-   Finally, run the conversion script to convert the downloaded Hugging Face model to a GGUF file.
+   Build the llama.cpp project using CMake.
+    ```bash
+   cmake llama.cpp -B build
+   cmake --build build --config Release 
+   ```
+
+6. **Convert the Model**
+
+   Run the conversion script to convert the downloaded Hugging Face model to a GGUF file.
     ```bash
    python llama.cpp/convert_hf_to_gguf.py <local_model_dir>
    ```
    Replace `<local_model_dir>` with the directory where you saved the Hugging Face model.
 
-By following these steps, you should be able to successfully convert a Hugging Face model to a GGUF file.
+7. **Quantize the Model to 4-bit**
+
+   After converting the model, you can quantize it to a 4-bit representation.
+    ```bash
+   ./llama-quantize ./models/mymodel/ggml-model-f16.gguf ./models/mymodel/ggml-model-Q4_K_M.gguf Q4_K_M
+   ```
+
+By following these steps, you should be able to successfully convert a Hugging Face model to a GGUF file and optionally quantize it to 4-bit.
