@@ -30,7 +30,10 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
 
    Navigate to the llama.cpp directory, pull the latest changes, clean previous builds, and then build the project with CUDA support.
     ```bash
-   cd llama.cpp && git pull && make clean && LLAMA_CUDA=1 make
+   cd llama.cpp
+   git pull
+   make clean
+   LLAMA_CUDA=1 make
    ```
 
 4. **Install Required Python Packages**
