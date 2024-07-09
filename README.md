@@ -15,7 +15,7 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
 
    Use the `huggingface-cli` to download your desired model from Hugging Face.
     ```bash
-   huggingface-cli download -m <Model> --local-dir <local_model_dir>
+   huggingface-cli download <Model ID from HF> --local-dir <local_model_dir>
    ```
    Replace `<Model>` with the name of the Hugging Face model you want to download and `<local_model_dir>` with the directory where you want to save the model.
 
