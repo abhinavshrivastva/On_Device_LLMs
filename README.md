@@ -86,4 +86,4 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
     Run the model using the `run` command:
     ```bash
     ollama run gorilla
-   ```
+    ```
