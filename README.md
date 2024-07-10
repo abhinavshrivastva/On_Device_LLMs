@@ -17,7 +17,7 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
     ```bash
    huggingface-cli download <Model ID from HF> --local-dir <local_model_dir>
    ```
-   Replace `<Model>` with the name of the Hugging Face model you want to download and `<local_model_dir>` with the directory where you want to save the model.
+   Replace `<Model ID from HF>` with the name of the Hugging Face model you want to download and `<local_model_dir>` with the directory where you want to save the model.
 
 2. **Clone the llama.cpp Repository**
 
@@ -38,16 +38,16 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
 
 4. **Install Required Python Packages**
 
-   Install the required Python packages listed in the requirements.txt file within the llama.cpp directory.
+   Install the required Python packages listed in the `requirements.txt` file within the llama.cpp directory.
     ```bash
-   pip install -r llama.cpp/requirements.txt
+   pip install -r requirements.txt
    ```
 
 5. **Build llama.cpp Using CMake**
 
    Build the llama.cpp project using CMake.
     ```bash
-   cmake llama.cpp -B build
+   cmake . -B build
    cmake --build build --config Release 
    ```
 
@@ -66,4 +66,24 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
    ./llama-quantize ./models/mymodel/ggml-model-f16.gguf ./models/mymodel/ggml-model-Q4_K_M.gguf Q4_K_M
    ```
 
-By following these steps, you should be able to successfully convert a Hugging Face model to a GGUF file and optionally quantize it to 4-bit.
+8. **Create a Modelfile**
+
+   Create a modelfile with the template:
+    ```
+    FROM D:\model\ggml-model-Q4_K_M.gguf  # (directory of the GGUF file)
+    SYSTEM Answer questions in detail.
+    ```
+
+9. **Create a Model**
+
+   Use the `ollama` command to create a model from the modelfile:
+    ```bash
+   ollama create gorilla -f "D:\model\gorilla.Modelfile"
+   ```
+
+10. **Run the Model**
+
+    Run the model using the `run` command:
+    ```bash
+    ollama run gorilla
+   ```
