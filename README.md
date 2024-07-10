@@ -4,10 +4,10 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
 
 ## Prerequisites
 
-- Python installed on your machine
-- Git installed on your machine
+- install ollama
+- install make
+- install cmake
 - `huggingface-cli` installed
-- `pip` installed
 
 ## Steps
 
