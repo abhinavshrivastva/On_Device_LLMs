@@ -1,0 +1,10 @@
+peft 
+transformers 
+trl 
+datasets 
+accelerate
+bitsandbytes
+huggingface_hub 
+ollama 
+make 
+cmake 
