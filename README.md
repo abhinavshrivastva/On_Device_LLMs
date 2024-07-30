@@ -87,3 +87,23 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
     ```bash
     ollama run <MODEL_NAME>
     ```
+
+
+
+### Methodology
+
+- **Dependency Installation**: The script installs all necessary Python packages and system dependencies required for model training and conversion.
+  
+- **Model Download**: The script downloads the Hugging Face model specified by the `model_id.txt` file and stores it in the local directory.
+  
+- **Building Tools**: It clones and builds the `llama.cpp` project, enabling CUDA support if specified. This tool is used for quantizing the model.
+  
+- **Model Conversion**: The Hugging Face model is converted to the GGUF format using the `convert_hf_to_gguf.py` script.
+  
+- **Quantization**: The converted GGUF model is quantized to a 4-bit format to reduce its size and improve performance.
+  
+- **Model File Creation**: A `Modelfile` is created to define the model configuration for `ollama`.
+  
+- **Model Creation**: The script uses `ollama` to create and set up the model based on the `Modelfile`.
+  
+- **Running the Model**: Finally, the model is run using `ollama`.
