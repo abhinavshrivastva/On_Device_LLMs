@@ -89,21 +89,39 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
     ```
 
 
+## Running the Pipeline
 
-### Methodology
+### Making the Script Executable
 
-- **Dependency Installation**: The script installs all necessary Python packages and system dependencies required for model training and conversion.
-  
-- **Model Download**: The script downloads the Hugging Face model specified by the `model_id.txt` file and stores it in the local directory.
-  
-- **Building Tools**: It clones and builds the `llama.cpp` project, enabling CUDA support if specified. This tool is used for quantizing the model.
-  
-- **Model Conversion**: The Hugging Face model is converted to the GGUF format using the `convert_hf_to_gguf.py` script.
-  
-- **Quantization**: The converted GGUF model is quantized to a 4-bit format to reduce its size and improve performance.
-  
-- **Model File Creation**: A `Modelfile` is created to define the model configuration for `ollama`.
-  
-- **Model Creation**: The script uses `ollama` to create and set up the model based on the `Modelfile`.
-  
-- **Running the Model**: Finally, the model is run using `ollama`.
+Before running the `build.sh` script, you need to ensure it has executable permissions. This allows the script to be run directly from the command line. To do this, use the `chmod` command:
+
+```bash
+chmod +x build.sh
+```
+
+This command changes the permissions of the `build.sh` file, making it executable. The `+x` flag adds execute permissions for the file.
+
+### Running the Script
+
+Once the script is executable, you can run it using the following command:
+
+```bash
+./build.sh
+```
+
+This command executes the `build.sh` script, which performs the entire pipeline process:
+
+1. **Installs Dependencies**: The script installs all necessary Python packages and system dependencies required for model fine-tuning and conversion.
+   
+2. **Downloads the Model**: It retrieves the Hugging Face model specified in `model_id.txt` and saves it to the local directory.
+   
+3. **Clones and Builds `llama.cpp`**: The script clones the `llama.cpp` repository, builds it with CUDA support, and installs required Python packages.
+   
+4. **Converts the Model**: It converts the downloaded Hugging Face model to GGUF format.
+   
+5. **Quantizes the Model**: The script quantizes the GGUF model to a 4-bit format to optimize it.
+   
+6. **Creates a Modelfile**: It generates a `Modelfile` for use with `ollama`.
+   
+7. **Sets Up the Model with `ollama`**: Finally, the script creates and configures the model using `ollama` and runs it.
+
