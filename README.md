@@ -78,12 +78,12 @@ This guide explains how to convert a Hugging Face model to a GGUF file. Follow t
 
    Use the `ollama` command to create a model from the modelfile:
     ```bash
-   ollama create gorilla -f "D:\model\gorilla.Modelfile"
+   ollama create <MODEL_NAME> -f "D:\model\<MODEL_NAME>.Modelfile"
    ```
 
 10. **Run the Model**
 
     Run the model using the `run` command:
     ```bash
-    ollama run gorilla
+    ollama run <MODEL_NAME>
     ```
