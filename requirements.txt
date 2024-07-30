@@ -2,7 +2,7 @@ peft
 transformers 
 trl 
 datasets 
-accelerate
+accelerate 
 bitsandbytes
 huggingface_hub 
 ollama 
